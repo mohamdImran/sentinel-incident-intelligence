@@ -1440,7 +1440,7 @@ export function AgentBuilderPage() {
                       </div>
                     </div>
                   )}
-                  <div className="max-w-2xl mx-auto space-y-4">
+                  <div className="max-w-4xl mx-auto space-y-4">
                     {!loadingHistory && messages.map((msg, i) => (
                       <ChatBubble key={i} msg={msg}
                         isStreaming={streaming && i === messages.length - 1 && msg.role === 'assistant'} />
