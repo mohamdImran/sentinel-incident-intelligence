@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #0B0F14;
+    color: #F1F5F9;
+    font-family: Inter, system-ui, sans-serif;
+    line-height: 1.5;
+    margin: 0;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.12) transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .font-numeric {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  .bg-gradient-surface {
+    background: linear-gradient(135deg, #121826 0%, #0F1520 100%);
+  }
+
+  .border-subtle {
+    border-color: rgba(255, 255, 255, 0.06);
+  }
+
+  .border-default {
+    border-color: rgba(255, 255, 255, 0.10);
+  }
+
+  .border-active {
+    border-color: rgba(6, 182, 212, 0.50);
+  }
+
+  .bg-agent-active {
+    background: rgba(6, 182, 212, 0.06);
+    border-color: rgba(6, 182, 212, 0.4);
+    box-shadow: 0 0 24px rgba(6, 182, 212, 0.15);
+  }
+
+  .text-glow-cyan {
+    text-shadow: 0 0 12px rgba(6, 182, 212, 0.6);
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .sentinel-card {
+    background-color: #121826;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+  }
+
+  .sentinel-card-elevated {
+    background-color: #161C24;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 8px;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-md text-text-secondary transition-all duration-150 cursor-pointer text-sm font-medium;
+  }
+
+  .nav-item:hover {
+    @apply bg-white/5 text-text-primary;
+  }
+
+  .nav-item.active {
+    @apply bg-accent-dim border-l-2 border-accent-cyan text-accent-bright;
+    padding-left: 10px;
+  }
+
+  .agent-card {
+    @apply sentinel-card p-4 transition-all duration-300 cursor-default select-none;
+  }
+
+  .agent-card.thinking {
+    border-color: rgba(6, 182, 212, 0.5);
+    background: rgba(6, 182, 212, 0.05);
+    box-shadow: 0 0 28px rgba(6, 182, 212, 0.2);
+    animation: agent-glow 2s ease-in-out infinite;
+  }
+
+  .agent-card.complete {
+    border-color: rgba(16, 185, 129, 0.4);
+    background: rgba(16, 185, 129, 0.04);
+  }
+
+  .agent-card.error {
+    border-color: rgba(239, 68, 68, 0.4);
+    background: rgba(239, 68, 68, 0.04);
+  }
+
+  .esql-keyword {
+    color: #22D3EE;
+    font-weight: 500;
+  }
+
+  .esql-function {
+    color: #A78BFA;
+  }
+
+  .esql-string {
+    color: #86EFAC;
+  }
+
+  .esql-number {
+    color: #FCA5A5;
+  }
+
+  .esql-comment {
+    color: #475569;
+    font-style: italic;
+  }
+}
+
+@keyframes cursor-blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+@keyframes agent-glow {
+  0%, 100% { box-shadow: 0 0 16px rgba(6, 182, 212, 0.25); }
+  50% { box-shadow: 0 0 36px rgba(6, 182, 212, 0.6); }
+}
+
+@keyframes node-pulse-ring {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes flow-dash {
+  to { stroke-dashoffset: -20; }
+}
+
+@keyframes metric-reveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0 0% 0 0); }
+}
+
+@keyframes skeleton-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(90deg, #121826 25%, #1A2230 50%, #121826 75%);
+  background-size: 400px 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
