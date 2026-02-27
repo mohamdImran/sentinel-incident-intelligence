@@ -68,7 +68,7 @@ Live node health map fetching real data from `/_nodes/stats` and `/_cluster/heal
 ### Install
 
 ```bash
-git clone https://github.com/your-org/sentinel
+git clone https://github.com/justinDevel/sentinel
 cd sentinel
 npm install
 ```
